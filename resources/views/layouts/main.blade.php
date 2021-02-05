@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+
+@include('commons.header')
+
+@section('main')
+
+@show
     
 </body>
 </html>

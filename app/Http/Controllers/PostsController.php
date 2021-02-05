@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post;
+use App\PostInformation;
+use App\Categories;
+
 class PostsController extends Controller
 {
     /**
@@ -13,7 +17,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        $post = Post::all();
+
+        dd($post);
     }
 
     /**
@@ -34,7 +40,9 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $newPost->save();
     }
 
     /**
@@ -56,7 +64,12 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $data = [
+            'categories' =>Category::all(),
+            'post' =>$post
+        ];
+        return view('edit', $data);
     }
 
     /**

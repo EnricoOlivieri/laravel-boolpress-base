@@ -7,13 +7,15 @@ use Faker\Generator as Faker;
 
 $factory->define(Category::class, function (Faker $faker) {
 
-    $words = $faker as $words();
+    $words = $faker -> words();
+    $slug = $faker -> slug();
 
     $title = '';
     foreach($words as $word){
         $title .=ucfirst($word) . '';
     }
     return [
-        //
+        'title' => $title,
+        'slug' => $slug
     ];
 });
